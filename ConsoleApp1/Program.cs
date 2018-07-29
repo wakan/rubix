@@ -117,7 +117,6 @@ namespace ConsoleApp1
         {
             int[] init = new int[] { 0, 1, 2, 3, 5, 6, 4, 7 };
             var mvts = new Stack<int>(PROF_MAX_SEARCH);
-            search(0, init, mvts);
 
             Console.WriteLine("Hello World!");
             Console.ReadLine();
