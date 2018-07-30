@@ -1,5 +1,6 @@
 ﻿using ConsoleApp1.Helpers;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,15 +18,20 @@ namespace ConsoleApp1
         int countNeedOptim = 0;
         public Task<List<List<Move>>> Solve()
         {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
             var mvts = new Stack<Move>(_ParamSolver.DeepthMaxSearch);
-            return Task.FromResult(search(0, _PositionInitials, mvts));
+            var res = search(0, _PositionInitials, mvts);
+            sw.Stop();
+            var time = sw.ElapsedMilliseconds;
+            return Task.FromResult(res);
         }
 
         List<int[]> listResultPasse = new List<int[]>();
 
         List<List<Move>> search(int deepth, int[] tc, Stack<Move> mvts)
         {
-            if (deepth > _ParamSolver.DeepthMaxSearch)
+            if (deepth >= _ParamSolver.DeepthMaxSearch)
             {
                 return new List<List<Move>>();
             }

@@ -6,7 +6,7 @@ namespace ConsoleApp1
 {
     class C2x2ParamSolver : ParamSolver
     {
-        public int DeepthMaxSearch => 24;
+        public int DeepthMaxSearch => 25;
 
         public Dictionary<Move, int[]> Tt => new Dictionary<Move, int[]>
         {
