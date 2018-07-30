@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace ConsoleApp1
 {
@@ -96,33 +97,43 @@ namespace ConsoleApp1
                 if (precmvt.Value / 3 == i / 3)
                     return true;
             }
-            //if (precprecmvt.HasValue)
-            //{
-            //    int mvtgroup = i / 3;
-            //    int precprecmvtgroup = precprecmvt.Value / 3;
-
-            //    // si on a fait F puis B puis F c'est la meme chose que F'' et B
-            //    //Idem pour L et R
-            //     if (mvtgroup == 0 && precprecmvtgroup == 1
-            //        || mvtgroup == 1 && precprecmvtgroup == 0
-            //        || mvtgroup == 2 && precprecmvtgroup == 3
-            //        || mvtgroup == 3 && precprecmvtgroup == 2
-            //        )
-            //        return true;
-            //}
+            if (precprecmvt.HasValue)
+            {
+                // si on a fait F puis B puis F c'est la meme chose que F'' et B donc on l'aura fait dans un autre mouvement ca ne sert a rien de la faire ici
+                //Idem pour L et R
+                if (precprecmvt.Value / 3 == i / 3)
+                    return true;
+            }
             return false;
         }
 
         static void Main(string[] args)
         {
-            int[] init = new int[] { 0, 1, 2, 3, 5, 6, 4, 7 };
+            int[] init = new int[] { 2,1,0,3,4,5,6,7 };
             var mvts = new Stack<int>(PROF_MAX_SEARCH);
-
+            var res = search(0, init, mvts);
+            var strHumain = transformeResToReadBeHumain(res);
+            Console.WriteLine(strHumain);
             Console.WriteLine("Hello World!");
             Console.ReadLine();
         }
 
-
+        private static object transformeResToReadBeHumain(List<int[]> res)
+        {
+            var sb = new StringBuilder();
+            foreach (var sol in res)
+            {
+                sb.Append(sol.Length);
+                sb.Append(" : ");
+                foreach (var im in sol)
+                {
+                    Move m = (Move)im;
+                    sb.Append(m.ToString());
+                }
+                sb.AppendLine();
+            }
+            return sb.ToString();
+        }
 
         public class EqualityComparer<T> : IEqualityComparer<T>
         {
@@ -143,5 +154,19 @@ namespace ConsoleApp1
             public Func<T, T, bool> cmp { get; set; }
         }
 
+    }
+    enum Move {
+        F = 0,
+        Fp,
+        Fs,
+        B,
+        Bp,
+        Bs,
+        L,
+        Lp,
+        Ls,
+        R,
+        Rp,
+        Rs,
     }
 }
