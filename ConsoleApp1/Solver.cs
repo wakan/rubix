@@ -33,7 +33,8 @@ namespace ConsoleApp1
             {
                 return new List<List<Move>> { getResultFromListMvtsCurrent(mvts) };
             }
-            if (listResultPasse.Contains(tc, new ArrayHelpers.EqualityComparer<int[]>((t1, t2) => Enumerable.SequenceEqual(t1, t2))))
+            var index = listResultPasse.FindIndex(v => Enumerable.SequenceEqual(tc, v));
+            if (index > 0)
             {
                 ++countNeedOptim;
                 var needOptim = true;
