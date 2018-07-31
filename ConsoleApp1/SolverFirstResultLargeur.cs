@@ -65,8 +65,6 @@ namespace ConsoleApp1
             }
             listResultPasse.Add(elementInHash);
 
-            var fifo = new Queue<Node>();
-
             foreach (var move in Param.Tt)
             {
                 if (Param.MustSkipForOptim(move.Key, node))

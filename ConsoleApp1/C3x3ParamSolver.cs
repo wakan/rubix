@@ -1,5 +1,6 @@
 ﻿
 using ConsoleApp1.Hierarchie;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -63,10 +64,24 @@ namespace ConsoleApp1
             {
                 // si on a fait F puis B puis F c'est la meme chose que F'' et B donc on l'aura fait dans un autre mouvement ca ne sert a rien de la faire ici
                 //Idem pour L et R
-                if (precprecmvt.Value.Identifiant == move.Identifiant)
+                if (precprecmvt.Value.Identifiant == move.Identifiant
+                    && precmvt.Value.Identifiant == oppose(move.Identifiant))
                     return true;
             }
             return false;
+        }
+
+        private char oppose(char identifiant)
+        {
+            if (identifiant == 'F')
+                return 'B';
+            if (identifiant == 'B')
+                return 'F';
+            if (identifiant == 'L')
+                return 'R';
+            if (identifiant == 'R')
+                return 'L';
+            throw new ArgumentException("identifiant");
         }
     }
 }

@@ -42,10 +42,11 @@ namespace ConsoleApp1
             [new Move { Identifiant = 'R', Sens = Move.EnumSens.Seconde }] = new Move { Identifiant = 'R', Sens = Move.EnumSens.Seconde },
         };
 
+
         public bool MustSkipForOptim(Move move, Node node)
         {
             Move? precmvt = node.Parent != null ? node.Parent.MoveCurrent : (Move?)null;
-            Move? precprecmvt = node.Parent != null 
+            Move? precprecmvt = node.Parent != null
                 ? node.Parent.Parent != null
                 ? node.Parent.Parent.MoveCurrent
                 : (Move?)null
@@ -62,10 +63,25 @@ namespace ConsoleApp1
             {
                 // si on a fait F puis B puis F c'est la meme chose que F'' et B donc on l'aura fait dans un autre mouvement ca ne sert a rien de la faire ici
                 //Idem pour L et R
-                if (precprecmvt.Value.Identifiant == move.Identifiant)
+                if (precprecmvt.Value.Identifiant == move.Identifiant
+                    && precmvt.Value.Identifiant == oppose(move.Identifiant))
                     return true;
             }
             return false;
         }
+
+        private char oppose(char identifiant)
+        {
+            if (identifiant == 'F')
+                return 'B';
+            if (identifiant == 'B')
+                return 'F';
+            if (identifiant == 'L')
+                return 'R';
+            if (identifiant == 'R')
+                return 'L';
+            throw new ArgumentException("identifiant");
+        }
+
     }
 }
