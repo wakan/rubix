@@ -3,9 +3,9 @@ using System.Text;
 
 namespace ConsoleApp1
 {
-    struct Move
+    public struct Move
     {
-        public string Identifiant;
+        public char Identifiant;
         public EnumSens Sens;
 
         public override string ToString() {
