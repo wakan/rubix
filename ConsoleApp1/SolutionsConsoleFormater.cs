@@ -13,7 +13,9 @@ namespace ConsoleApp1
         }
         public string Format()
         {
-            var strHumain = string.Join(Environment.NewLine, _Solutions.Select(r => string.Join(string.Empty, r)));
+            var strHumain = string.Join(Environment.NewLine, 
+                _Solutions.Select(r => string.Concat('[', r.Count, "] ", 
+                string.Join(string.Empty, r))));
             return strHumain;
         }
     }
