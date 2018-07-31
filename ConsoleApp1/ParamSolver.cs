@@ -1,4 +1,5 @@
 ﻿
+using ConsoleApp1.Hierarchie;
 using System.Collections.Generic;
 
 namespace ConsoleApp1
@@ -9,6 +10,6 @@ namespace ConsoleApp1
         Dictionary<Move, int[]> Tt { get; }
         int[] Tr { get; }
 
-        bool MustSkipForOptim(Move key, Stack<Move> mvts);
+        bool MustSkipForOptim(Move key, Node node);
     }
 }

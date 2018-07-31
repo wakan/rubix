@@ -23,7 +23,7 @@ namespace UnitTestProject1.SolverTest.C2x2
             var moves = CubeHelpers.GetListNMoveAleatoire(paramSolver.Tt, 2);
 
             var cubeInit = CubeHelpers.ApplyMovesToCube(paramSolver.Tr, moves);
-            var solver = (Solver)new SolverVertical(paramSolver, cubeInit);
+            var solver = (Solver)new SolverFirstResultLargeur(paramSolver, cubeInit);
             var sols = solver.Solve().Result;
             Console.WriteLine(string.Join(string.Empty, moves));
             var formatter = new SolutionsConsoleFormater(sols);

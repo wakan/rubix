@@ -1,4 +1,5 @@
 ﻿
+using ConsoleApp1.Hierarchie;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -26,10 +27,14 @@ namespace ConsoleApp1
 
         public int[] Tr => new int[] { 0, 1, 2, 3, 4, 5, 6, 7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26 };
 
-        public bool MustSkipForOptim(Move move, Stack<Move> mvts)
+        public bool MustSkipForOptim(Move move, Node node)
         {
-            Move? precmvt = mvts.Any() ? mvts.Peek() : (Move?)null;
-            Move? precprecmvt = mvts.Skip(1).Any() ? mvts.Skip(1).First() : (Move?)null;
+            Move? precmvt = node.Parent != null ? node.Parent.MoveCurrent : (Move?)null;
+            Move? precprecmvt = node.Parent != null
+                ? node.Parent.Parent != null
+                ? node.Parent.Parent.MoveCurrent
+                : (Move?)null
+                : (Move?)null;
             if (precmvt.HasValue)
             {
                 //Si on a fait F avant alors ca ne sert a rien de faire F, F' ou F''
