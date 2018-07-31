@@ -39,5 +39,14 @@ namespace UnitTestProject1.SolverTest
             return tt.ElementAt(random);
         }
 
+        public static IEnumerable<KeyValuePair<Move, int[]>> GetMoveWithTransoFromMove(
+            IEnumerable<Move> moves,
+            Dictionary<Move, int[]> tt
+            )
+        {
+            return moves.Select(m => new KeyValuePair<Move, int[]>(m, tt[m]));
+        }
+
+
     }
 }

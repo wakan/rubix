@@ -20,7 +20,14 @@ namespace UnitTestProject1.SolverTest.C2x2
         [TestMethod]
         public void SolveTest()
         {
-            var moves = CubeHelpers.GetListNMoveAleatoire(paramSolver.Tt, 3);
+            //var moves = CubeHelpers.GetListNMoveAleatoire(paramSolver.Tt, 3);
+            var moves = CubeHelpers.GetMoveWithTransoFromMove(
+                new List<Move> {
+                    new Move{ Identifiant = 'F', Sens = Move.EnumSens.Normal },
+                    new Move{ Identifiant = 'B', Sens = Move.EnumSens.Normal },
+                    new Move{ Identifiant = 'R', Sens = Move.EnumSens.Normal },
+                }
+                , paramSolver.Tt);
 
             var cubeInit = CubeHelpers.ApplyMovesToCube(paramSolver.Tr, moves);
             var solver = (Solver)new SolverFirstResultLargeur(paramSolver, cubeInit);

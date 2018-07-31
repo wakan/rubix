@@ -19,8 +19,8 @@ namespace UnitTestProject1.Transformation.C2x2
         [TestMethod]
         public void IsEqualTest()
         {
-            var listmoves1WithTransfo = getMoveWithTransoFromMove(move1());
-            var listmoves2WithTransfo = getMoveWithTransoFromMove(move2());
+            var listmoves1WithTransfo = CubeHelpers.GetMoveWithTransoFromMove(move1(), paramSolver.Tt);
+            var listmoves2WithTransfo = CubeHelpers.GetMoveWithTransoFromMove(move2(), paramSolver.Tt);
 
             var cubeApresTransfoMove1 = CubeHelpers.ApplyMovesToCube(
                 paramSolver.Tr, listmoves1WithTransfo);
@@ -28,12 +28,6 @@ namespace UnitTestProject1.Transformation.C2x2
                 paramSolver.Tr, listmoves2WithTransfo);
 
             Assert.IsTrue(Enumerable.SequenceEqual(cubeApresTransfoMove1, cubeApresTransfoMove2));
-        }
-
-        private IEnumerable<KeyValuePair<Move, int[]>> getMoveWithTransoFromMove(
-            IEnumerable<Move> moves)
-        {
-            return moves.Select(m => new KeyValuePair<Move, int[]>(m, paramSolver.Tt[m]));
         }
 
         IEnumerable<Move> move1()
