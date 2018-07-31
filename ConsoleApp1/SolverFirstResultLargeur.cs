@@ -22,17 +22,32 @@ namespace ConsoleApp1
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            var mvts = new Stack<Move>(Param.DeepthMaxSearch);
-            search(new Node { CubeMove = PositionInitial, deepth = 0 } );
+            pl(new Node { CubeMove = PositionInitial, deepth = 0 } );
             sw.Stop();
             var time = sw.ElapsedMilliseconds;
-            return Task.FromResult(new List<List<Move>> { _Result });
+            if (_Result.Any())
+                return Task.FromResult(new List<List<Move>> { _Result });
+            else
+                return Task.FromResult(new List<List<Move>>());
         }
         List<Move> _Result = new List<Move>();
 
         string elementInHash;
         HashSet<string> listResultPasse = new HashSet<string>();
-        void search(Node node)
+        void pl(Node node)
+        {
+            var fifo = new Queue<Node>();
+            fifo.Enqueue(node);
+            Node nodeDequeue;
+            while (fifo.TryDequeue(out nodeDequeue))
+            {
+                traiter(nodeDequeue);
+                foreach (var item in nodeDequeue.Fils)
+                    fifo.Enqueue(item);
+            }
+
+        }
+        void traiter(Node node)
         {
             if (node.deepth >= Param.DeepthMaxSearch
                 || _Result.Any())
@@ -58,27 +73,24 @@ namespace ConsoleApp1
                     continue;
                 var ttc = move.Value;
                 var trswipe = ArrayHelpers.SwipeTab(node.CubeMove, ttc);
-               node.Fils.Add(new Node {
+                node.Fils.Add(new Node
+                {
                     CubeMove = trswipe,
                     deepth = node.deepth + 1,
                     MoveCurrent = move.Key,
                     Parent = node,
                 });
             }
-            Node nodeDequeue;
-            while (fifo.TryDequeue(out nodeDequeue))
-                foreach (var item in nodeDequeue.Fils)
-                    fifo.Enqueue(item);
-
-
         }
 
         List<Move> getResultFromListMvtsCurrent(Node node)
         {
-            List<Move> moves = new List<Move>();
-            while (node.Parent != null)
+            List<Move> moves = new List<Move>(Param.DeepthMaxSearch);
+            Node nodeCur = node;
+            while (nodeCur.Parent != null)
             {
-                moves.Add(node.MoveCurrent);
+                moves.Add(nodeCur.MoveCurrent);
+                nodeCur = nodeCur.Parent;
             }
             moves.Reverse();
             return moves;

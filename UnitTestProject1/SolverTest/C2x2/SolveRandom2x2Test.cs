@@ -20,16 +20,17 @@ namespace UnitTestProject1.SolverTest.C2x2
         [TestMethod]
         public void SolveTest()
         {
-            var moves = CubeHelpers.GetListNMoveAleatoire(paramSolver.Tt, 2);
+            var moves = CubeHelpers.GetListNMoveAleatoire(paramSolver.Tt, 3);
 
             var cubeInit = CubeHelpers.ApplyMovesToCube(paramSolver.Tr, moves);
             var solver = (Solver)new SolverFirstResultLargeur(paramSolver, cubeInit);
             var sols = solver.Solve().Result;
-            Console.WriteLine(string.Join(string.Empty, moves));
+            Console.WriteLine(string.Join(string.Empty, moves.Select(m=>m.Key)));
             var formatter = new SolutionsConsoleFormater(sols);
             var strHumain = formatter.Format();
             Console.WriteLine(strHumain);
             Console.WriteLine("Hello World!");
+            moves.Reverse();
             Assert.IsTrue(sols.Contains(moves.Select(kv=>kv.Key).ToList(),
                 new ArrayHelpers.EqualityComparer<List<Move>>((t1, t2) => t1.SequenceEqual(t2))));
         }
