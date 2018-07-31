@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class Solver
+    public class Solver
     {
         readonly ParamSolver _ParamSolver;
         readonly int[] _PositionInitials;

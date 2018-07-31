@@ -3,16 +3,16 @@ using ConsoleApp1.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 
-namespace UnitTestProject1.Transformation.C3X3
+namespace UnitTestProject1.Transformation.C2X2
 {
     [TestClass]
-    public class MvtUnitaireTest3x3
+    public class MvtAnnulation2x2Test
     {
         ParamSolver paramSolver;
         [TestInitialize]
         public void Init()
         {
-            paramSolver = new C3x3ParamSolver();
+            paramSolver = new C2x2ParamSolver();
         }
         protected void testswipeMove(Move m1, Move m2)
         {
