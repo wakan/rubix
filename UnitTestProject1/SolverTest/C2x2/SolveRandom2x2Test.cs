@@ -24,6 +24,7 @@ namespace UnitTestProject1.SolverTest.C2x2
             var cubeInit = CubeHelpers.RandomizeCube(paramSolver, 2, out moves);
             var solver = new Solver(paramSolver, cubeInit);
             var sols = solver.Solve().Result;
+            Console.WriteLine(string.Join(string.Empty, moves));
             var formatter = new SolutionsConsoleFormater(sols);
             var strHumain = formatter.Format();
             Console.WriteLine(strHumain);
