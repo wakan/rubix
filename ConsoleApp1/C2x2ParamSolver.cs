@@ -27,6 +27,21 @@ namespace ConsoleApp1
 
         public int[] Tr => new int[] { 0, 1, 2, 3, 4, 5, 6, 7 };
 
+        public Dictionary<Move, Move> Reverses => new Dictionary<Move, Move> {
+            [new Move { Identifiant = 'F', Sens = Move.EnumSens.Normal }] = new Move { Identifiant = 'F', Sens = Move.EnumSens.Prime },
+            [new Move { Identifiant = 'F', Sens = Move.EnumSens.Prime }] = new Move { Identifiant = 'F', Sens = Move.EnumSens.Normal },
+            [new Move { Identifiant = 'F', Sens = Move.EnumSens.Seconde }] = new Move { Identifiant = 'F', Sens = Move.EnumSens.Seconde },
+            [new Move { Identifiant = 'B', Sens = Move.EnumSens.Normal }] = new Move { Identifiant = 'B', Sens = Move.EnumSens.Prime },
+            [new Move { Identifiant = 'B', Sens = Move.EnumSens.Prime }] = new Move { Identifiant = 'B', Sens = Move.EnumSens.Normal },
+            [new Move { Identifiant = 'B', Sens = Move.EnumSens.Seconde }] = new Move { Identifiant = 'B', Sens = Move.EnumSens.Seconde },
+            [new Move { Identifiant = 'L', Sens = Move.EnumSens.Normal }] = new Move { Identifiant = 'L', Sens = Move.EnumSens.Prime },
+            [new Move { Identifiant = 'L', Sens = Move.EnumSens.Prime }] = new Move { Identifiant = 'L', Sens = Move.EnumSens.Normal },
+            [new Move { Identifiant = 'L', Sens = Move.EnumSens.Seconde }] = new Move { Identifiant = 'L', Sens = Move.EnumSens.Seconde },
+            [new Move { Identifiant = 'R', Sens = Move.EnumSens.Normal }] = new Move { Identifiant = 'R', Sens = Move.EnumSens.Prime },
+            [new Move { Identifiant = 'R', Sens = Move.EnumSens.Prime }] = new Move { Identifiant = 'R', Sens = Move.EnumSens.Normal },
+            [new Move { Identifiant = 'R', Sens = Move.EnumSens.Seconde }] = new Move { Identifiant = 'R', Sens = Move.EnumSens.Seconde },
+        };
+
         public bool MustSkipForOptim(Move move, Node node)
         {
             Move? precmvt = node.Parent != null ? node.Parent.MoveCurrent : (Move?)null;

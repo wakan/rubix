@@ -8,6 +8,7 @@ namespace ConsoleApp1
     {
         int DeepthMaxSearch { get; }
         Dictionary<Move, int[]> Tt { get; }
+        Dictionary<Move, Move> Reverses { get; }
         int[] Tr { get; }
 
         bool MustSkipForOptim(Move key, Node node);
