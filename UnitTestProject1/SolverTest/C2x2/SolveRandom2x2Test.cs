@@ -20,8 +20,9 @@ namespace UnitTestProject1.SolverTest.C2x2
         [TestMethod]
         public void SolveTest()
         {
-            List<Move> moves;
-            var cubeInit = CubeHelpers.RandomizeCube(paramSolver, 2, out moves);
+            var moves = CubeHelpers.GetListNMoveAleatoire(paramSolver.Tt, 2);
+
+            var cubeInit = CubeHelpers.ApplyMovesToCube(paramSolver.Tr, moves);
             var solver = new Solver(paramSolver, cubeInit);
             var sols = solver.Solve().Result;
             Console.WriteLine(string.Join(string.Empty, moves));
@@ -29,7 +30,7 @@ namespace UnitTestProject1.SolverTest.C2x2
             var strHumain = formatter.Format();
             Console.WriteLine(strHumain);
             Console.WriteLine("Hello World!");
-            Assert.IsTrue(sols.Contains(moves,
+            Assert.IsTrue(sols.Contains(moves.Select(kv=>kv.Key).ToList(),
                 new ArrayHelpers.EqualityComparer<List<Move>>((t1, t2) => t1.SequenceEqual(t2))));
         }
     }

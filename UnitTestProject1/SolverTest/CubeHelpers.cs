@@ -8,20 +8,32 @@ namespace UnitTestProject1.SolverTest
 {
     static class CubeHelpers
     {
-        public static int[] RandomizeCube(ParamSolver paramSolver, int nbFois, out List<Move> p_Moves)
+        public static List<KeyValuePair<Move, int[]>> GetListNMoveAleatoire(
+            Dictionary<Move, int[]> tts, int nbFois)
         {
-            p_Moves = new List<Move>(nbFois);
-            var cubeCurrent = paramSolver.Tr.ToArray();
+            var moves = new List<KeyValuePair<Move, int[]>>(nbFois);
             for (int i = 0; i < nbFois; i++)
             {
-                KeyValuePair<Move, int[]> m = getRandomMove(paramSolver.Tt);
-                p_Moves.Add(m.Key);
-                cubeCurrent = ArrayHelpers.SwipeTab(cubeCurrent, m.Value);
+                var m = getRandomMove(tts);
+                moves.Add(m);
             }
-            return cubeCurrent;
+            return moves;
         }
+
+        public static int[] ApplyMovesToCube(int[] initcube, 
+            IEnumerable<KeyValuePair<Move, int[]>> moves)
+        {
+            int[] cCube = initcube.ToArray();
+            foreach (var m in moves)
+            {
+                cCube = ArrayHelpers.SwipeTab(cCube, m.Value);
+            }
+            return cCube;
+        }
+
         static Random r = new Random();
-        private static KeyValuePair<Move, int[]> getRandomMove(Dictionary<Move, int[]> tt)
+        private static KeyValuePair<Move, int[]> getRandomMove(
+            Dictionary<Move, int[]> tt)
         {
             int random = r.Next(tt.Count);
             return tt.ElementAt(random);
