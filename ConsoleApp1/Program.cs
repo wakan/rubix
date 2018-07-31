@@ -15,7 +15,7 @@ namespace ConsoleApp1
             var formatter = new SolutionsConsoleFormater(res);
             var strHumain = formatter.Format();
             Console.WriteLine(strHumain);
-            Console.WriteLine("Hello World!");
+            Console.WriteLine($"Hello World! {DateTime.Now}");
             Console.ReadLine();
         }
     }
