@@ -27,7 +27,8 @@ namespace ConsoleApp1
             return Task.FromResult(res);
         }
 
-        List<int[]> listResultPasse = new List<int[]>();
+        string elementInHash;
+        HashSet<string> listResultPasse = new HashSet<string>();
 
         List<List<Move>> search(int deepth, int[] tc, Stack<Move> mvts)
         {
@@ -39,11 +40,10 @@ namespace ConsoleApp1
             {
                 return new List<List<Move>> { getResultFromListMvtsCurrent(mvts) };
             }
-            var index = listResultPasse.FindIndex(v => Enumerable.SequenceEqual(tc, v));
-            if (index > 0)
+            elementInHash = string.Join(string.Empty, tc);
+            if (listResultPasse.Contains(elementInHash))
             {
                 ++countNeedOptim;
-                var needOptim = true;
                 return new List<List<Move>>();
             }
 
@@ -53,8 +53,7 @@ namespace ConsoleApp1
             {
                 if (_ParamSolver.MustSkipForOptim(move.Key, mvts))
                     continue;
-                listResultPasse.Add(tc);
-
+                listResultPasse.Add(elementInHash);
                 var ttc = move.Value;
                 var trswipe = ArrayHelpers.SwipeTab(tc, ttc);
                 mvts.Push(move.Key);
