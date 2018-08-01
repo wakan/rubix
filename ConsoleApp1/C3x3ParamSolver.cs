@@ -96,14 +96,35 @@ namespace ConsoleApp1
                 var opposeMoveIdentiant = oppose(moveIdentifiant);
                 var precIdentifiant = precmvt.Value.Identifiant;
                 var opposePrecIdentifiant = oppose(precIdentifiant);
+                var precprecIdentifiant = precprecmvt.Value.Identifiant;
+                var opposePrecprecIdentifiant = oppose(precprecIdentifiant);
 
-                if (move.Sens == Move.EnumSens.Seconde
+                if (
+                    (moveIdentifiant == 'F'
+                    || moveIdentifiant == 'L'
+                    || moveIdentifiant == 'U'
+                    )
+                    && move.Sens == Move.EnumSens.Seconde
                     && precmvt.Value.Sens == Move.EnumSens.Seconde
                     && precprecmvt.Value.Sens == Move.EnumSens.Seconde
                     && precprecmvt.Value.Identifiant == opposePrecIdentifiant
                     && precprecprecmvt.Value.Sens == Move.EnumSens.Seconde
                     && (precprecprecmvt.Value.Identifiant == opposeMoveIdentiant
-                            || precprecprecmvt.Value.Identifiant == moveIdentifiant)
+                    || precprecprecmvt.Value.Identifiant == moveIdentifiant)
+                    )
+                    return true;
+
+                if (
+                    (moveIdentifiant == 'F'
+                    || moveIdentifiant == 'L'
+                    || moveIdentifiant == 'U'
+                    )
+                    && move.Sens == Move.EnumSens.Seconde
+                    && precmvt.Value.Sens == Move.EnumSens.Seconde
+                    && precmvt.Value.Identifiant == opposeMoveIdentiant
+                    && precprecmvt.Value.Sens == Move.EnumSens.Seconde
+                    && precprecprecmvt.Value.Sens == Move.EnumSens.Seconde
+                    && precprecprecmvt.Value.Identifiant == opposePrecprecIdentifiant
                     )
                     return true;
             }

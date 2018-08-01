@@ -74,6 +74,27 @@ namespace UnitTestProject1.Transformation.C3x3
         }
 
         [TestMethod]
+        public void FSecondeLSecondeRSecondeBSecondeFetBInverseOnLaisseUnDesDeuxTestTest()
+        {
+            var currentMove = new Move { Identifiant = 'B', Sens = Move.EnumSens.Seconde };
+            var node = new Node
+            {
+                MoveCurrent = new Move { Identifiant = 'R', Sens = Move.EnumSens.Seconde },
+                Parent = new Node
+                {
+                    MoveCurrent = new Move { Identifiant = 'L', Sens = Move.EnumSens.Seconde },
+                    Parent = new Node
+                    {
+                        MoveCurrent = new Move { Identifiant = 'F', Sens = Move.EnumSens.Seconde },
+                    }
+                }
+            };
+            Assert.IsFalse(paramSolver.MustSkipForOptim(currentMove, node));
+        }
+
+        
+
+        [TestMethod]
         public void FSecondeLSecondeRSecondeBSecondeFetBNonInverseTest()
         {
             var currentMove = new Move { Identifiant = 'F', Sens = Move.EnumSens.Seconde };
@@ -86,6 +107,63 @@ namespace UnitTestProject1.Transformation.C3x3
                     Parent = new Node
                     {
                         MoveCurrent = new Move { Identifiant = 'F', Sens = Move.EnumSens.Seconde },
+                    }
+                }
+            };
+            Assert.IsTrue(paramSolver.MustSkipForOptim(currentMove, node));
+        }
+
+        [TestMethod]
+        public void FSecondeLSecondeRSecondeBSecondeFetBNonInverseOnLaisseUnDesDeuxTest()
+        {
+            var currentMove = new Move { Identifiant = 'B', Sens = Move.EnumSens.Seconde };
+            var node = new Node
+            {
+                MoveCurrent = new Move { Identifiant = 'R', Sens = Move.EnumSens.Seconde },
+                Parent = new Node
+                {
+                    MoveCurrent = new Move { Identifiant = 'L', Sens = Move.EnumSens.Seconde },
+                    Parent = new Node
+                    {
+                        MoveCurrent = new Move { Identifiant = 'B', Sens = Move.EnumSens.Seconde },
+                    }
+                }
+            };
+            Assert.IsFalse(paramSolver.MustSkipForOptim(currentMove, node));
+        }
+
+        [TestMethod]
+        public void FSecondeBSecondeRSecondeBSecondeInverseTest()
+        {
+            var currentMove = new Move { Identifiant = 'F', Sens = Move.EnumSens.Seconde };
+            var node = new Node
+            {
+                MoveCurrent = new Move { Identifiant = 'B', Sens = Move.EnumSens.Seconde },
+                Parent = new Node
+                {
+                    MoveCurrent = new Move { Identifiant = 'L', Sens = Move.EnumSens.Seconde },
+                    Parent = new Node
+                    {
+                        MoveCurrent = new Move { Identifiant = 'R', Sens = Move.EnumSens.Seconde },
+                    }
+                }
+            };
+            Assert.IsTrue(paramSolver.MustSkipForOptim(currentMove, node));
+        }
+
+        [TestMethod]
+        public void FSecondeBSecondeRSecondeBSecondeInverseOnLaisseUnDesDeuxTest()
+        {
+            var currentMove = new Move { Identifiant = 'F', Sens = Move.EnumSens.Seconde };
+            var node = new Node
+            {
+                MoveCurrent = new Move { Identifiant = 'B', Sens = Move.EnumSens.Seconde },
+                Parent = new Node
+                {
+                    MoveCurrent = new Move { Identifiant = 'L', Sens = Move.EnumSens.Seconde },
+                    Parent = new Node
+                    {
+                        MoveCurrent = new Move { Identifiant = 'R', Sens = Move.EnumSens.Seconde },
                     }
                 }
             };
