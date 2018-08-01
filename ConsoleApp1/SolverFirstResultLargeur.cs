@@ -45,7 +45,6 @@ namespace ConsoleApp1
                 foreach (var item in nodeDequeue.Fils)
                     fifo.Enqueue(item);
             }
-
         }
         void traiter(Node node)
         {
