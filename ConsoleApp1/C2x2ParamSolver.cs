@@ -41,6 +41,12 @@ namespace ConsoleApp1
             [new Move { Identifiant = 'R', Sens = Move.EnumSens.Normal }] = new Move { Identifiant = 'R', Sens = Move.EnumSens.Prime },
             [new Move { Identifiant = 'R', Sens = Move.EnumSens.Prime }] = new Move { Identifiant = 'R', Sens = Move.EnumSens.Normal },
             [new Move { Identifiant = 'R', Sens = Move.EnumSens.Seconde }] = new Move { Identifiant = 'R', Sens = Move.EnumSens.Seconde },
+            [new Move { Identifiant = 'U', Sens = Move.EnumSens.Normal }] = new Move { Identifiant = 'D', Sens = Move.EnumSens.Prime },
+            [new Move { Identifiant = 'U', Sens = Move.EnumSens.Prime }] = new Move { Identifiant = 'D', Sens = Move.EnumSens.Normal },
+            [new Move { Identifiant = 'U', Sens = Move.EnumSens.Seconde }] = new Move { Identifiant = 'D', Sens = Move.EnumSens.Seconde },
+            [new Move { Identifiant = 'D', Sens = Move.EnumSens.Normal }] = new Move { Identifiant = 'U', Sens = Move.EnumSens.Prime },
+            [new Move { Identifiant = 'D', Sens = Move.EnumSens.Prime }] = new Move { Identifiant = 'U', Sens = Move.EnumSens.Normal },
+            [new Move { Identifiant = 'D', Sens = Move.EnumSens.Seconde }] = new Move { Identifiant = 'U', Sens = Move.EnumSens.Seconde },
         };
         public bool MustSkipForOptim(Move move, Node node)
         {
