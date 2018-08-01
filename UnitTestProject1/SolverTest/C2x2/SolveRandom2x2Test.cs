@@ -24,8 +24,8 @@ namespace UnitTestProject1.SolverTest.C2x2
             var moves = CubeHelpers.GetMoveWithTransoFromMove(
                 new List<Move> {
                     new Move{ Identifiant = 'F', Sens = Move.EnumSens.Normal },
-                    new Move{ Identifiant = 'B', Sens = Move.EnumSens.Normal },
                     new Move{ Identifiant = 'R', Sens = Move.EnumSens.Normal },
+                    new Move{ Identifiant = 'B', Sens = Move.EnumSens.Normal },
                 }
                 , paramSolver.Tt);
 
@@ -37,8 +37,8 @@ namespace UnitTestProject1.SolverTest.C2x2
             var strHumain = formatter.Format();
             Console.WriteLine(strHumain);
             Console.WriteLine("Hello World!");
-            moves.Reverse();
-            Assert.IsTrue(sols.Contains(moves.Select(kv=>kv.Key).ToList(),
+            Assert.IsTrue(sols.Contains(CubeHelpers.Reverse(paramSolver.Reverses, 
+                moves.Select(kv=>kv.Key)).ToList(),
                 new ArrayHelpers.EqualityComparer<List<Move>>((t1, t2) => t1.SequenceEqual(t2))));
         }
     }

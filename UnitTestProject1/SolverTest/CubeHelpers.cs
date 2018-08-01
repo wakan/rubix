@@ -47,6 +47,11 @@ namespace UnitTestProject1.SolverTest
             return moves.Select(m => new KeyValuePair<Move, int[]>(m, tt[m]));
         }
 
+        public static IEnumerable<Move> Reverse(Dictionary<Move, Move> reversesData, IEnumerable<Move> moves)
+        {
+            return moves.Reverse().Select(m => reversesData[m]);
+        }
+
 
     }
 }
