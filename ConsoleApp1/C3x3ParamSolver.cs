@@ -87,6 +87,9 @@ namespace ConsoleApp1
                 if (precmvt.Value.Identifiant == 'R'
                    && move.Identifiant == 'L')
                     return true;
+                if (precmvt.Value.Identifiant == 'D'
+                   && move.Identifiant == 'U')
+                    return true;
             }
             if (precprecmvt.HasValue)
             {
