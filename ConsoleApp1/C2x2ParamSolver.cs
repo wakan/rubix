@@ -60,6 +60,13 @@ namespace ConsoleApp1
                 //... pour R et L
                 if (precmvt.Value.Identifiant == move.Identifiant)
                     return true;
+
+                if (precmvt.Value.Identifiant == 'B'
+                    && move.Identifiant == 'F')
+                    return true; //Ca sert a rien de faire le BF on aura deja fait le FB
+                if (precmvt.Value.Identifiant == 'R'
+                   && move.Identifiant == 'L')
+                    return true;
             }
             if (precprecmvt.HasValue)
             {
@@ -84,6 +91,5 @@ namespace ConsoleApp1
                 return 'L';
             throw new ArgumentException("identifiant");
         }
-
     }
 }
