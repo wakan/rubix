@@ -54,5 +54,24 @@ namespace UnitTestProject1
             Assert.IsTrue(paramSolver.MustSkipForOptim(currentMove, node));
         }
 
+        [TestMethod]
+        public void FSecondeLSecondeRSecondeBSecondeFetBInverseTest()
+        {
+            var currentMove = new Move { Identifiant = 'F', Sens = Move.EnumSens.Seconde };
+            var node = new Node
+            {
+                MoveCurrent = new Move { Identifiant = 'R', Sens = Move.EnumSens.Seconde },
+                Parent = new Node
+                {
+                    MoveCurrent = new Move { Identifiant = 'L', Sens = Move.EnumSens.Seconde },
+                    Parent = new Node
+                    {
+                        MoveCurrent = new Move { Identifiant = 'B', Sens = Move.EnumSens.Seconde },
+                    }
+                }
+            };
+            Assert.IsTrue(paramSolver.MustSkipForOptim(currentMove, node));
+        }
+
     }
 }
