@@ -34,6 +34,8 @@ namespace ConsoleApp1
 
         string elementInHash;
         HashSet<string> listResultPasse = new HashSet<string>();
+        Dictionary<string, List<Move>> listResultPasseDiag = new Dictionary<string, List<Move>>();
+
         void pl(Node node)
         {
             var fifo = new Queue<Node>();
@@ -59,10 +61,13 @@ namespace ConsoleApp1
             elementInHash = string.Join(string.Empty, node.CubeMove);
             if (listResultPasse.Contains(elementInHash))
             {
+                var currentNode = getResultFromListMvtsCurrent(node);
+                var oldAlready = listResultPasseDiag[elementInHash];
                 ++countNeedOptim;
                 return;
             }
             listResultPasse.Add(elementInHash);
+            listResultPasseDiag.Add(elementInHash, getResultFromListMvtsCurrent(node));
 
             foreach (var move in Param.Tt)
             {
