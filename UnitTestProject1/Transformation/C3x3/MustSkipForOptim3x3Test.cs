@@ -92,8 +92,6 @@ namespace UnitTestProject1.Transformation.C3x3
             Assert.IsFalse(paramSolver.MustSkipForOptim(currentMove, node));
         }
 
-        
-
         [TestMethod]
         public void FSecondeLSecondeRSecondeBSecondeFetBNonInverseTest()
         {

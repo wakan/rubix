@@ -124,7 +124,7 @@ namespace ConsoleApp1
                     return true;
 
                 if (
-                    moveIdentifiant == 'F'
+                    moveIdentifiant != 'F'
                     && move.Sens == Move.EnumSens.Seconde
                     && precmvt.Value.Sens == Move.EnumSens.Seconde
                     && precmvt.Value.Identifiant == opposeMoveIdentiant
