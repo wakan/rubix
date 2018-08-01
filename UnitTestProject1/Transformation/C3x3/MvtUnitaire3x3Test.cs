@@ -91,5 +91,44 @@ namespace UnitTestProject1.Transformation.C3x3
             var m = new Move { Identifiant = 'R', Sens = Move.EnumSens.Seconde };
             testswipeMove(m);
         }
+
+        [TestMethod]
+        public void TransfoUTest()
+        {
+            var m = new Move { Identifiant = 'U', Sens = Move.EnumSens.Normal };
+            testswipeMove(m);
+        }
+        [TestMethod]
+        public void TransfoUPrimeTest()
+        {
+            var m = new Move { Identifiant = 'U', Sens = Move.EnumSens.Prime };
+            testswipeMove(m);
+        }
+        [TestMethod]
+        public void TransfoUSecondeTest()
+        {
+            var m = new Move { Identifiant = 'U', Sens = Move.EnumSens.Seconde };
+            testswipeMove(m);
+        }
+        [TestMethod]
+        public void TransfoDTest()
+        {
+            var m = new Move { Identifiant = 'D', Sens = Move.EnumSens.Normal };
+            testswipeMove(m);
+        }
+        [TestMethod]
+        public void TransfoDPrimeTest()
+        {
+            var m = new Move { Identifiant = 'D', Sens = Move.EnumSens.Prime };
+            testswipeMove(m);
+        }
+        [TestMethod]
+        public void TransfoDSecondeTest()
+        {
+            var m = new Move { Identifiant = 'D', Sens = Move.EnumSens.Seconde };
+            testswipeMove(m);
+        }
+
+
     }
 }

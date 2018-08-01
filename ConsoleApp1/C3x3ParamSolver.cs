@@ -23,7 +23,13 @@ namespace ConsoleApp1
             [new Move { Identifiant = 'L', Sens = Move.EnumSens.Seconde }] = new int[] { 24, 1, 2, 21, 4, 5, 18, 7, 8, 15, 10, 11, 12, 13, 14, 9, 16, 17, 6, 19, 20, 3, 22, 23, 0, 25, 26 },
             [new Move { Identifiant = 'R', Sens = Move.EnumSens.Normal }] = new int[] { 0, 1, 8, 3, 4, 17, 6, 7, 26, 9, 10, 5, 12, 13, 14, 15, 16, 23, 18, 19, 2, 21, 22, 11, 24, 25, 20 },
             [new Move { Identifiant = 'R', Sens = Move.EnumSens.Prime }] = new int[] { 0, 1, 20, 3, 4, 11, 6, 7, 2, 9, 10, 23, 12, 13, 14, 15, 16, 5, 18, 19, 26, 21, 22, 17, 24, 25, 8 },
-            [new Move { Identifiant = 'R', Sens = Move.EnumSens.Seconde }] = new int[] { 0, 1, 26, 3, 4, 23, 6, 7, 20, 9, 10, 17, 12, 13, 14, 15, 16, 11, 18, 19, 8, 21, 22, 5, 24, 25, 2 }, 
+            [new Move { Identifiant = 'R', Sens = Move.EnumSens.Seconde }] = new int[] { 0, 1, 26, 3, 4, 23, 6, 7, 20, 9, 10, 17, 12, 13, 14, 15, 16, 11, 18, 19, 8, 21, 22, 5, 24, 25, 2 },
+            [new Move { Identifiant = 'U', Sens = Move.EnumSens.Normal }] = new int[] { 2, 11, 20, 3, 4, 5, 6, 7, 8, 1, 10, 19, 12, 13, 14, 15, 16, 17, 0, 9, 18, 21, 22, 23, 24, 25, 26 },
+            [new Move { Identifiant = 'U', Sens = Move.EnumSens.Prime }] = new int[] { 18, 9, 0, 3, 4, 5, 6, 7, 8, 19, 10, 1, 12, 13, 14, 15, 16, 17, 20, 11, 2, 21, 22, 23, 24, 25, 26 },
+            [new Move { Identifiant = 'U', Sens = Move.EnumSens.Seconde }] = new int[] { 20, 19, 18, 3, 4, 5, 6, 7, 8, 11, 10, 9, 12, 13, 14, 15, 16, 17, 2, 1, 0, 21, 22, 23, 24, 25, 26 },
+            [new Move { Identifiant = 'D', Sens = Move.EnumSens.Normal }] = new int[] { 0, 1, 2, 3, 4, 5, 24, 15, 6, 9, 10, 11, 12, 13, 14, 25, 16, 7, 18, 19, 20, 21, 22, 23, 26, 17, 8 },
+            [new Move { Identifiant = 'D', Sens = Move.EnumSens.Prime }] = new int[] { 0, 1, 2, 3, 4, 5, 8, 17, 26, 9, 10, 11, 12, 13, 14, 7, 16, 17, 18, 19, 20, 21, 22, 23, 6, 15, 24 },
+            [new Move { Identifiant = 'D', Sens = Move.EnumSens.Seconde }] = new int[] { 0, 1, 2, 3, 4, 5, 26, 25, 24, 9, 10, 11, 12, 13, 14, 17, 16, 15, 18, 19, 20, 21, 22, 23, 8, 7, 6 } ,
         };
 
         public int[] Tr => new int[] { 0, 1, 2, 3, 4, 5, 6, 7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26 };
