@@ -42,7 +42,6 @@ namespace ConsoleApp1
             [new Move { Identifiant = 'R', Sens = Move.EnumSens.Prime }] = new Move { Identifiant = 'R', Sens = Move.EnumSens.Normal },
             [new Move { Identifiant = 'R', Sens = Move.EnumSens.Seconde }] = new Move { Identifiant = 'R', Sens = Move.EnumSens.Seconde },
         };
-
         public bool MustSkipForOptim(Move move, Node node)
         {
             Move? precmvt = node != null ? node.MoveCurrent : (Move?)null;
@@ -84,25 +83,19 @@ namespace ConsoleApp1
             }
             if (precprecprecmvt.HasValue)
             {
-                if (move.Identifiant == 'F' && move.Sens == Move.EnumSens.Seconde
-                    && precmvt.Value.Identifiant == 'R' && move.Sens == Move.EnumSens.Seconde
-                    && precprecmvt.Value.Identifiant == 'L' && move.Sens == Move.EnumSens.Seconde
-                    && precprecprecmvt.Value.Identifiant == 'B' && move.Sens == Move.EnumSens.Seconde)
-                    return true;
-                if (move.Identifiant == 'F' && move.Sens == Move.EnumSens.Seconde
-                    && precmvt.Value.Identifiant == 'L' && move.Sens == Move.EnumSens.Seconde
-                    && precprecmvt.Value.Identifiant == 'R' && move.Sens == Move.EnumSens.Seconde
-                    && precprecprecmvt.Value.Identifiant == 'B' && move.Sens == Move.EnumSens.Seconde)
-                    return true;
-                if (move.Identifiant == 'L' && move.Sens == Move.EnumSens.Seconde
-                    && precmvt.Value.Identifiant == 'F' && move.Sens == Move.EnumSens.Seconde
-                    && precprecmvt.Value.Identifiant == 'B' && move.Sens == Move.EnumSens.Seconde
-                    && precprecprecmvt.Value.Identifiant == 'R' && move.Sens == Move.EnumSens.Seconde)
-                    return true;
-                if (move.Identifiant == 'L' && move.Sens == Move.EnumSens.Seconde
-                   && precmvt.Value.Identifiant == 'B' && move.Sens == Move.EnumSens.Seconde
-                   && precprecmvt.Value.Identifiant == 'F' && move.Sens == Move.EnumSens.Seconde
-                   && precprecprecmvt.Value.Identifiant == 'R' && move.Sens == Move.EnumSens.Seconde)
+                var moveIdentifiant = move.Identifiant;
+                var opposeMoveIdentiant = oppose(moveIdentifiant);
+                var precIdentifiant = precmvt.Value.Identifiant;
+                var opposePrecIdentifiant = oppose(precIdentifiant);
+
+                if (move.Sens == Move.EnumSens.Seconde
+                    && precmvt.Value.Sens == Move.EnumSens.Seconde
+                    && precprecmvt.Value.Sens == Move.EnumSens.Seconde
+                    && precprecmvt.Value.Identifiant == opposePrecIdentifiant
+                    && precprecprecmvt.Value.Sens == Move.EnumSens.Seconde
+                    && (precprecprecmvt.Value.Identifiant == opposeMoveIdentiant
+                            || precprecprecmvt.Value.Identifiant == moveIdentifiant)
+                    )
                     return true;
             }
             return false;

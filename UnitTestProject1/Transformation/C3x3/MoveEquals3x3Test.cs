@@ -35,12 +35,12 @@ namespace UnitTestProject1.Transformation.C3x3
             yield return new Move { Identifiant = 'F', Sens = Move.EnumSens.Seconde };
             yield return new Move { Identifiant = 'L', Sens = Move.EnumSens.Seconde };
             yield return new Move { Identifiant = 'R', Sens = Move.EnumSens.Seconde };
-            yield return new Move { Identifiant = 'B', Sens = Move.EnumSens.Seconde };
+            yield return new Move { Identifiant = 'F', Sens = Move.EnumSens.Seconde };
         }
 
         IEnumerable<Move> move2()
         {
-            yield return new Move { Identifiant = 'B', Sens = Move.EnumSens.Seconde };
+            yield return new Move { Identifiant = 'F', Sens = Move.EnumSens.Seconde };
             yield return new Move { Identifiant = 'L', Sens = Move.EnumSens.Seconde };
             yield return new Move { Identifiant = 'R', Sens = Move.EnumSens.Seconde };
             yield return new Move { Identifiant = 'F', Sens = Move.EnumSens.Seconde };
