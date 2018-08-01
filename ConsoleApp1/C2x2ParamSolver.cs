@@ -43,15 +43,16 @@ namespace ConsoleApp1
             [new Move { Identifiant = 'R', Sens = Move.EnumSens.Seconde }] = new Move { Identifiant = 'R', Sens = Move.EnumSens.Seconde },
         };
 
-
         public bool MustSkipForOptim(Move move, Node node)
         {
-            Move? precmvt = node.Parent != null ? node.Parent.MoveCurrent : (Move?)null;
+            Move? precmvt = node != null ? node.MoveCurrent : (Move?)null;
             Move? precprecmvt = node.Parent != null
-                ? node.Parent.Parent != null
-                ? node.Parent.Parent.MoveCurrent
+                ? node != null
+                ? node.Parent != null
+                ? node.Parent.MoveCurrent
                 : (Move?)null
-                : (Move?)null;
+                : null
+                : null;
             if (precmvt.HasValue)
             {
                 //Si on a fait F avant alors ca ne sert a rien de faire F, F' ou F''
