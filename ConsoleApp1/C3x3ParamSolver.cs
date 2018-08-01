@@ -147,6 +147,10 @@ namespace ConsoleApp1
                 return 'R';
             if (identifiant == 'R')
                 return 'L';
+            if (identifiant == 'U')
+                return 'D';
+            if (identifiant == 'D')
+                return 'U';
             throw new ArgumentException("identifiant");
         }
     }
