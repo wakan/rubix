@@ -49,8 +49,8 @@ namespace UnitTestProject1
         [TestMethod]
         public void SkipBFCarDejaFaitFBOuOnFeraFBTest()
         {
-            var currentMove = new Move { Identifiant = 'B', Sens = Move.EnumSens.Prime };
-            var node = new Node { MoveCurrent = new Move { Identifiant = 'F', Sens = Move.EnumSens.Normal } };
+            var currentMove = new Move { Identifiant = 'F', Sens = Move.EnumSens.Prime };
+            var node = new Node { MoveCurrent = new Move { Identifiant = 'B', Sens = Move.EnumSens.Normal } };
             Assert.IsTrue(paramSolver.MustSkipForOptim(currentMove, node));
         }
 

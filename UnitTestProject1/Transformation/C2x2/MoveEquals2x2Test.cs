@@ -7,7 +7,7 @@ using UnitTestProject1.SolverTest;
 namespace UnitTestProject1.Transformation.C2x2
 {
     [TestClass]
-    public class MoveEqualsTest
+    public class MoveEquals2x2Test
     {
         ParamSolver paramSolver;
         [TestInitialize]
