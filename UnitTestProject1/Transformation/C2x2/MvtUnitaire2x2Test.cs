@@ -3,7 +3,7 @@ using ConsoleApp1.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 
-namespace UnitTestProject1.Transformation.C2X2
+namespace UnitTestProject1.Transformation.C2x2
 {
     [TestClass]
     public class MvtUnitaire2x2Test

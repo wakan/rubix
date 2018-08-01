@@ -44,15 +44,22 @@ namespace ConsoleApp1
             [new Move { Identifiant = 'R', Sens = Move.EnumSens.Seconde }] = new Move { Identifiant = 'R', Sens = Move.EnumSens.Seconde },
         };
 
+
         public bool MustSkipForOptim(Move move, Node node)
         {
             Move? precmvt = node != null ? node.MoveCurrent : (Move?)null;
-            Move? precprecmvt = node.Parent != null
-                ? node != null
+            Move? precprecmvt =
+                 node != null
                 ? node.Parent != null
                 ? node.Parent.MoveCurrent
                 : (Move?)null
-                :null
+                : null;
+            Move? precprecprecmvt = node != null
+                ? node.Parent != null
+                ? node.Parent.Parent != null
+                ? node.Parent.Parent.MoveCurrent
+                : (Move?)null
+                : null
                 : null;
             if (precmvt.HasValue)
             {
@@ -75,6 +82,29 @@ namespace ConsoleApp1
                 //Idem pour L et R
                 if (precprecmvt.Value.Identifiant == move.Identifiant
                     && precmvt.Value.Identifiant == oppose(move.Identifiant))
+                    return true;
+            }
+            if (precprecprecmvt.HasValue)
+            {
+                if (move.Identifiant == 'F' && move.Sens == Move.EnumSens.Seconde
+                    && precmvt.Value.Identifiant == 'R' && move.Sens == Move.EnumSens.Seconde
+                    && precprecmvt.Value.Identifiant == 'L' && move.Sens == Move.EnumSens.Seconde
+                    && precprecprecmvt.Value.Identifiant == 'B' && move.Sens == Move.EnumSens.Seconde)
+                    return true;
+                if (move.Identifiant == 'F' && move.Sens == Move.EnumSens.Seconde
+                    && precmvt.Value.Identifiant == 'L' && move.Sens == Move.EnumSens.Seconde
+                    && precprecmvt.Value.Identifiant == 'R' && move.Sens == Move.EnumSens.Seconde
+                    && precprecprecmvt.Value.Identifiant == 'B' && move.Sens == Move.EnumSens.Seconde)
+                    return true;
+                if (move.Identifiant == 'L' && move.Sens == Move.EnumSens.Seconde
+                    && precmvt.Value.Identifiant == 'F' && move.Sens == Move.EnumSens.Seconde
+                    && precprecmvt.Value.Identifiant == 'B' && move.Sens == Move.EnumSens.Seconde
+                    && precprecprecmvt.Value.Identifiant == 'R' && move.Sens == Move.EnumSens.Seconde)
+                    return true;
+                if (move.Identifiant == 'L' && move.Sens == Move.EnumSens.Seconde
+                   && precmvt.Value.Identifiant == 'B' && move.Sens == Move.EnumSens.Seconde
+                   && precprecmvt.Value.Identifiant == 'F' && move.Sens == Move.EnumSens.Seconde
+                   && precprecprecmvt.Value.Identifiant == 'R' && move.Sens == Move.EnumSens.Seconde)
                     return true;
             }
             return false;

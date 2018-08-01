@@ -5,16 +5,16 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace UnitTestProject1
+namespace UnitTestProject1.C3x3
 {
     [TestClass]
-    public class MustSkipForOptimTest
+    public class MustSkipForOptim3x3Test
     {
         ParamSolver paramSolver;
         [TestInitialize]
         public void Init()
         {
-            paramSolver = new C2x2ParamSolver();
+            paramSolver = new C3x3ParamSolver();
         }
         [TestMethod]
         public void OpposeFFPrimeMoveTest()
