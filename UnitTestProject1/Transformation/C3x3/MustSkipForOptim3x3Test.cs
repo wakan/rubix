@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace UnitTestProject1.C3x3
+namespace UnitTestProject1.Transformation.C3x3
 {
     [TestClass]
     public class MustSkipForOptim3x3Test
